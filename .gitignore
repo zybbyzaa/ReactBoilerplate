@@ -1,0 +1,11 @@
+# 包
+/node_modules
+
+# sass编译map
+*.map
+
+# npm
+npm-debug.log
+
+# github ignore
+/dest

@@ -1,4 +1,4 @@
 export App from './App';
-export Home from './Home';
-export Article from './Article';
-export Article from './Article';
+export FundDetail from './FundDetail';
+export FundManager from './FundManager';
+export FundAssets from './FundAssets';
