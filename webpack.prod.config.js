@@ -12,6 +12,9 @@ module.exports = {
     output: {
         filename: 'js/[name].js'
     },
+    alias: {
+        lib: './lib'
+    },
     module: {
       	loaders: [{
 	      	test: /\.js$/,
@@ -19,7 +22,7 @@ module.exports = {
             loader: 'babel',
             query: {
                 presets: ['es2015', 'stage-0', 'react']
-            } 
+            }
       	}, {
             test: /\.scss$/,
             loader: ExtractTextPlugin.extract("style","css!sass")

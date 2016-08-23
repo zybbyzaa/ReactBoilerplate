@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import { Link } from 'react-router';
+import '../assets/scss/fundDetail.scss';
 
 const defaultProps = {
 };
@@ -14,9 +14,9 @@ class FundDetail extends Component {
     constructor (props) {
         super(props);
         // 定义 state
-        
+
         // 定义 eventHandler
-        
+
     }
 
     // 生命周期方法
@@ -29,15 +29,9 @@ class FundDetail extends Component {
 
     // render
     render () {
-        // const {children} = this.props;
 
         return (
-            <div className="container">
-                <p>FundDetail</p>
-                <ul>
-                    <li><Link to='/fundManager.html'>FundManager</Link></li>
-                    <li><Link to='/fundAssets.html'>FundAssets</Link></li>
-                </ul>
+            <div className="wrapper">
             </div>
         )
     }
