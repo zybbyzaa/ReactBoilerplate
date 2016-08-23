@@ -17,12 +17,7 @@ var config = require("./app-config.js");
  *  tasks
  * ----------------------------------------------------
  */
- gulp.task('default',['webpack']);
- gulp.task('webpack', function() {
-  return gulp.src(config.path.entry)
-    .pipe(webpackGlup(require("./webpack.dev.config")))
-    .pipe(gulp.dest('dest/'));
-});
+gulp.task('default',['webpack']);
 gulp.task("watch", function() {
   browserSync.init({
     ghostMode: false,
@@ -33,8 +28,13 @@ gulp.task("watch", function() {
   })
 });
 gulp.task('build',['webpack:build']);
+gulp.task('webpack', function() {
+  return gulp.src(config.path.entry)
+    .pipe(webpackGlup(webpackDevConfig))
+    .pipe(gulp.dest('dest/'));
+});
 gulp.task('webpack:build',function () {
 	return gulp.src(config.path.entry)
-    .pipe(webpackGulp(require("./webpack.prod.config")))
+    .pipe(webpackGlup(webpackProdConfig))
     .pipe(gulp.dest('dest/'));
 });

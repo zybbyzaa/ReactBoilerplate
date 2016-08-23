@@ -6,10 +6,9 @@ var CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
     watch: true,
-    devtool: 'inline-map',
     entry: {
     	fundDetail: './src/fund-detail/entry.js',
-    	vendor: ['react', 'react-dom']
+    	vendor: ['react', 'react-dom', 'redux', 'react-router', 'react-redux', 'react-router-redux']
     },
     output: {
         filename: 'js/[name].js'
@@ -51,6 +50,11 @@ module.exports = {
         }]
     },
     plugins: [
+        new CleanWebpackPlugin("dest", {
+            root: process.cwd(),
+            verbose: true,
+            dry: false
+        }),
         new HtmlWebpackPlugin({
         	title: 'react',
         	filename: 'fundDetail.html',
@@ -63,11 +67,6 @@ module.exports = {
         new webpack.optimize.CommonsChunkPlugin('vendor', 'js/vendor.bundle.js'),
         new ExtractTextPlugin("css/[name]-[chunkhash].css", {
             allChunks: true
-        }),
-        new CleanWebpackPlugin("dest", {
-            root: process.cwd(),
-            verbose: true,
-            dry: false
         })
     ]
 };

@@ -1,6 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
+import { Link } from 'react-router';
 
 const defaultProps = {
 };
@@ -32,7 +33,11 @@ class FundDetail extends Component {
 
         return (
             <div className="container">
-                FundDetail
+                <p>FundDetail</p>
+                <ul>
+                    <li><Link to='/fundManager.html'>FundManager</Link></li>
+                    <li><Link to='/fundAssets.html'>FundAssets</Link></li>
+                </ul>
             </div>
         )
     }

@@ -7,7 +7,7 @@ var CleanWebpackPlugin = require('clean-webpack-plugin');
 module.exports = {
     entry: {
         fundDetail: './src/fund-detail/entry.js',
-    	vendor: ['react', 'react-dom']
+    	vendor: ['react', 'react-dom', 'redux', 'react-router', 'react-redux', 'react-router-redux']
     },
     output: {
         filename: 'js/[name].js'

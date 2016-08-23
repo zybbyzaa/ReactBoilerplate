@@ -2,20 +2,20 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 import {Router, browserHistory, Route, IndexRoute} from 'react-router';
+import { syncHistoryWithStore } from 'react-router-redux';
 import configureStore from './store/configureStore';
 import showDevTools from './containers/showDevTools';
-import { App, FundDetail, FundManager, FundAssets } from './containers';
+import { FundDetail, FundManager, FundAssets } from './containers';
 
 const store = configureStore();
+const history = syncHistoryWithStore(browserHistory, store);
 
 ReactDOM.render(
     <Provider store={store}>
-        <Router history={browserHistory}>
-            <Route path="/" component={App}>
-                <IndexRoute component={FundDetail}/>
-                <Route path="fundManager" component={FundManager}>
-                <Route path="fundAssets" component={FundAssets}>
-            </Route>
+        <Router history={history}>
+            <Route path="/fundDetail.html" component={FundDetail} />
+            <Route path="/fundManager.html" component={FundManager}/>
+            <Route path="/fundAssets.html" component={FundAssets}/>
         </Router>
     </Provider>, document.getElementById('root')
 );
