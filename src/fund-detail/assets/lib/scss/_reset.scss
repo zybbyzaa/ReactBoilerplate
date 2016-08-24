@@ -427,6 +427,11 @@ i {
     @extend %clearfix;
 }
 
+// 隐藏
+.hide {
+    display: none;
+}
+
 // 页面通用样式
 .wrapper{
     width: 100%;

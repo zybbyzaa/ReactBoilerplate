@@ -2,12 +2,10 @@ import React, { Component, PropTypes } from 'react';
 import moment from 'moment';
 
 const defaultProps = {
-	fund: {
-		fundType: 4
-	}
+
 };
 const propTypes = {
-	fund: React.PropTypes.object
+
 };
 
 class FundDetailTabPanel extends Component {
@@ -31,19 +29,27 @@ class FundDetailTabPanel extends Component {
     	const {children,fund} = this.props;
 
         return (
-            <div className="fund-detail-charttab">
-				<ul className="fund-detail-nav-tab">
-					{ 
-						fund.fundType && fund.fundType == 4 ?
-						<li className="tab on" tab-index="0" id="tab0" onclick="changeChartType('yearlyRoe')">7日年化收益率</li>
-						<li className="tab tab-li-last" tab-index="1" id="tab1" onclick="changeChartType('unitYield')">万份收益</li>
-						:
-						<li className="tab on" tab-index="0" id="tab0" onclick="changeChartType('nav')">净值走势</li>
-						<li className="tab tab-li-last" tab-index="1" id="tab1" onclick="changeChartType('change')">收益率走势</li>
-					}
-				</ul>
-				{children}
-			</div>
+            <div className="fund-detail-tab-pane in" id="tab-pane0">
+                <div className="fund-detail-tab-pane-header clearfix">
+                    <section className="fund-detail-tab-pane-headerl left" id="_compare-section" style={{display: 'none'}}>
+                        <span className="icon icon-1"></span><span className="fund1">本基金</span><span className="icon icon-2"></span><span className="fund2">沪深300</span><span className="detail-icon" id="the-fund-icon"></span>
+                    </section>
+                    <section className="fund-detail-tab-pane-headerr right" id="_recent_up_down_ratio_section" style={{display: 'none'}}>
+                        <span id="_recent-change-text"></span>&nbsp;&nbsp;<span id="_recent-change-percent"></span>%
+                    </section>
+                </div>
+                <div className="fund-detail-tab-pane-footer clearfix">
+                    <section className="fund-detail-tab-pane-footerl left" id="_rank_section"><span>同类排名</span>&nbsp;&nbsp;<span id="_no_rank_span" className="hide">未有同类排名</span><span id="_rank_span" className="hide"><span className="stress" id="_rankMine"></span><span id="_rankTotal"></span></span>
+                    </section>
+                    <section className="fund-detail-tab-pane-footerr right">
+                        <ul className="fund-detail-tab-pane-footerrul clearfix">
+                            <li className="stress" onClick="changeChartDay('1m')">近一月</li>
+                            <li onClick="changeChartDay('3m')">近三月</li>
+                            <li onClick="changeChartDay('1y')">近一年</li>
+                        </ul>
+                    </section>
+                </div>
+            </div>
         )
     }
 

@@ -18,7 +18,6 @@ class FundDetail extends Component {
     constructor (props) {
         super(props);
         // 定义 state
-
         // 定义 eventHandler
 
     }
@@ -28,9 +27,7 @@ class FundDetail extends Component {
     // getter methods for render
 
     // event handlers
-
     //render methods
-
     // render
     render () {
 
