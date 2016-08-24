@@ -1,4 +1,7 @@
+var path = require('path');
 var config = require("./app-config.js");
+var autoprefixerConf = config.support.autoprefixer;
+var platform = config.platform;
 var webpack = require("webpack");
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
@@ -13,8 +16,12 @@ module.exports = {
     output: {
         filename: 'js/[name].js'
     },
-    alias: {
-        lib: './lib'
+    postcss: [
+        require('autoprefixer')({ browsers: autoprefixerConf[platform] }),
+        require('cssgrace')
+    ],
+    resolve: {
+        extensions: ['', '.js']
     },
     module: {
       	loaders: [{
@@ -29,7 +36,7 @@ module.exports = {
             loader: ExtractTextPlugin.extract("style","css!sass")
         }, {
         	test: /\.css$/,
-            loader: ExtractTextPlugin.extract('style', 'css')
+            loader: ExtractTextPlugin.extract('style', 'css!postcss')
         }, {
             test: /\.(png|jpg|jpeg|gif|svg)$/,
             loader: 'url-loader',

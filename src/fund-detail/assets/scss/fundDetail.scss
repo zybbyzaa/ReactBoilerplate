@@ -1,3 +1,214 @@
-@import url('lib/scss/variables.scss');
-@import url('lib/scss/mixin.scss');
-@import url('lib/scss/reset.scss');
+@import '../lib/scss/_variables.scss';
+@import '../lib/scss/_mixin.scss';
+@import '../lib/scss/_reset.scss';
+
+/************************* fund-detail-header  ****/
+.fund-detail-header{
+	width: 100%;
+	padding: 0.32rem 0 0.4rem 0;
+	background: #3d4656;
+	text-align: center;
+	.title {
+	    font-size: 0.2rem;
+	    color: #a1a1a1;
+	    margin-bottom: 0.16rem;
+	    display: block;
+	}
+	.value {
+	    font-size: 0.36rem;
+	    color: #fff;
+	    font-weight: bold;
+	}
+	.per {
+	    font-weight: normal;
+	}
+	.fund-detail-header-left, .fund-detail-header-right{
+		width: 50%;
+	}
+}
+/************   fund-detail-intro   ********/
+.fund-detail-intro{
+	width: 100%;
+	height: 0.9rem;
+	padding: 0.2rem 0.06rem;
+	box-sizing: border-box;
+	border-bottom: 1px solid #d5d5d5;
+	margin-bottom: 0.2rem;
+	background: #fff;
+}
+
+.fund-detail-introul{
+	width: 100%;
+	li{
+		border-right: 1px solid #d5d5d5;
+		float: left;
+		box-sizing: border-box;
+		text-align: center;
+		background: #fff;
+		&.li-1st-of-3{
+			width: 40%;
+		}
+		&.li-2nd-of-3{
+			width: 28%;
+		}
+		&.last-li{
+			width: 32%;
+			border: none;
+		}
+	}
+	.title{
+		color: #a1a1a1;
+		font-size: 0.2rem;
+		margin-right: 0.14rem;
+	}
+	.val{
+		color: #414141;
+		font-size: 0.24rem;
+	}
+	.green{
+		color: #00ae4a;
+	}
+	.red{
+		color: #ff0000;
+	}
+}
+
+.detail-icon{
+	display: inline-block;
+	vertical-align: middle;
+	width: 0.26rem;
+	height: 0.26rem;
+	background: url(../images/m/fund/dicon_03.png) no-repeat center;
+	background-size: 100% auto;
+	margin-left: 0.05rem;
+	position: relative;
+	top: -0.02rem;
+}
+/*********************  fund-detail-charttab **************/
+.fund-detail-charttab {
+    background: #fff;
+    box-sizing: border-box;
+    border-top: 1px solid #d5d5d5;
+    border-bottom: 1px solid #d5d5d5;
+    margin-bottom: 0.2rem;
+}
+
+.fund-detail-nav-tab {
+	width: 100%;
+    background: #fff;
+    li {
+	    display: block;
+	    position: relative;
+	    float: left;
+	    line-height: 0.9rem;
+	    width: 50%;
+	    font-size: 0.28rem;
+	    color: #414141;
+	    text-align: center;
+	    border-bottom: 1px solid #d5d5d5;
+	    border-left: 1px solid #d5d5d5;
+	    background: #e5e5e5;
+	    box-sizing: border-box;
+	    &.on{
+	    	background: #fff;
+			color: #ff7e0c;
+			border: none;
+			&.tab-li-last{
+				border-left: 1px solid #d5d5d5;
+			}
+			&:before{
+				content: "";
+			    position: absolute;
+			    top: -1px;
+			    width: 100%;
+			    height: 2px;
+			    background: #ff8005;
+			    left: 0;
+			}
+	    }
+	    &:hover:before{
+	    	content: "";
+		    position: absolute;
+		    top: -1px;
+		    width: 100%;
+		    height: 2px;
+		    background: #ff8005;
+		    left: 0;
+	    }
+	}
+	&:after{
+		content: "";
+	    display: table;
+	    clear: both;
+	}
+}
+.fund-detail-tab-pane {
+    display: none;
+    padding: 0.29rem 0.29rem 0.18rem 0.29rem;
+    &.in {
+	    display: block;
+	}
+}
+
+.fund-detail-tab-pane-header{
+	font-size: 0.2rem;
+	color: #414141;
+	.icon{
+		width: 0.24rem;
+		height: 0.06rem;
+		margin-right: 0.1rem;
+		display: inline-block;
+		position: relative;
+		top: -0.024rem;
+	}
+	.icon-1{
+		background: #676be9;
+	}
+	.icon-2{
+		margin-left: 0.6rem;
+		background: #df6513;
+	}
+}
+/**********************  chart ****************/
+
+.fund-detail-tab-pane-chart{
+	width: 100%;
+	height: 2.8rem;
+}
+
+.fund-detail-tab-pane-headerl{
+	position: relative;
+	top: -0.06rem;
+}
+
+.fund-detail-tab-pane-footer{
+	width: 100%;
+	font-size: 0.2rem;
+	color: #a1a1a1;
+	.stress{
+		color: #ff7e0c;
+	}
+}
+
+.fund-detail-tab-pane-footerr{
+	position: relative;
+	top: -0.07rem;
+}
+
+.fund-detail-tab-pane-footerrul{
+	li{
+		padding: 0.06rem 0.12rem 0.06rem 0.12rem;
+		color: #a1a1a1;
+		float: left;
+		border: 1px solid #a1a1a1;
+		-moz-border-radius: 0.5rem; /* Firefox */
+	  	-webkit-border-radius: 0.5rem; /* Safari 和 Chrome */
+		border-radius: 0.5rem;
+		margin-left: 0.13rem;
+		box-sizing: border-box;
+		&..stress{
+			color: #ff7e0c;
+			border-color: #ff7e0c;
+		}
+	}
+}

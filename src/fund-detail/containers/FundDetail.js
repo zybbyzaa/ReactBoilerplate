@@ -1,6 +1,10 @@
 import React, {Component, PropTypes} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
+import FundDetailHeader from '../components/FundDetailHeader';
+import FundDetailIntro from '../components/FundDetailIntro';
+import FundDetailTab from '../components/FundDetailTab';
+import FundDetailTabPanel from '../components/FundDetailTabPanel';
 import '../assets/scss/fundDetail.scss';
 
 const defaultProps = {
@@ -32,6 +36,11 @@ class FundDetail extends Component {
 
         return (
             <div className="wrapper">
+                <FundDetailHeader />
+                <FundDetailIntro />
+                <FundDetailTab>
+                    <FundDetailTabPanel />
+                </FundDetailTab>
             </div>
         )
     }
