@@ -1,6 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
+import * as detailActions from '../actions/actions';
 import FundDetailHeader from '../components/FundDetailHeader';
 import FundDetailIntro from '../components/FundDetailIntro';
 import FundDetailTab from '../components/FundDetailTab';
@@ -30,12 +31,14 @@ class FundDetail extends Component {
     //render methods
     // render
     render () {
+        const tabIndex = this.props.tab.tabIndex;
+        const toggleTab = this.props.actions.toggleTab;
 
         return (
             <div className="wrapper">
                 <FundDetailHeader />
                 <FundDetailIntro />
-                <FundDetailTab>
+                <FundDetailTab tabIndex={tabIndex} toggleTab={toggleTab}>
                     <FundDetailTabPanel />
                 </FundDetailTab>
             </div>
@@ -49,12 +52,13 @@ FundDetail.propTypes = propTypes;
 
 function mapStateToProps(state) {
     return {
-        location: state.routing.location
+        tab: state.tab.toJS()
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
+        actions: bindActionCreators(detailActions, dispatch)
     }
 }
 

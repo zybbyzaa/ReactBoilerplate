@@ -1,17 +1,16 @@
 import React, { Component, PropTypes } from 'react';
-import moment from 'moment';
+import classnames from 'classnames';
 
 const defaultProps = {
     fund: {
         fundType: 4
     },
-    changeChartType: function(type) {
-        console.log(type);
-    }
+    tabIndex: 1
 };
 const propTypes = {
     fund: React.PropTypes.object,
-    changeChartType: React.PropTypes.func
+    children: React.PropTypes.node,
+    tabIndex: React.PropTypes.number
 };
 
 class FundDetailTab extends Component {
@@ -20,7 +19,7 @@ class FundDetailTab extends Component {
     constructor (props) {
         super(props);
         // 定义 eventHandler
-
+        this.changeChartType.bind(this);
     }
 
     // 生命周期方法
@@ -28,30 +27,42 @@ class FundDetailTab extends Component {
     // getter methods for render
 
     // event handlers
-
+    changeChartType (tabIndex,type) {
+        this.props.toggleTab(tabIndex);
+        console.log(type);
+    }
     //render methods
     // render
     render () {
-    	const {children,fund,changeChartType} = this.props;
+    	const {children,fund,tabIndex} = this.props;
+        let tabClassName1 = classnames({
+            'tab': true,
+            'on': tabIndex == 0
+        });
+        let tabClassName2 = classnames({
+            'tab': true,
+            'tab-li-last': true,
+            'on': tabIndex == 1
+        });
 
         return (
             <div className="fund-detail-charttab">
-                        <ul className="fund-detail-nav-tab">
-                            {
-                            fund.fundType && fund.fundType == 4 ?
-                            <li className="tab on" id="tab0" onClick={e => changeChartType('yearlyRoe'){>7日年化收益率</li>
-                            :
-                            <li className="tab on" id="tab0" onClick={e => changeChartType('nav')}>净值走势</li>
-                            }
-                            {
-                                fund.fundType && fund.fundType == 4 ?
-                                <li className="tab tab-li-last" id="tab1" onClick={e => changeChartType('unitYield')}>万份收益</li>
-                                :
-                                <li className="tab tab-li-last" id="tab1" onClick={e => changeChartType('change')}>收益率走势</li>
-                            }
-                        </ul>
-                        {children}
-                    </div>
+                <ul className="fund-detail-nav-tab">
+                    {
+                        fund.fundType && fund.fundType == 4 ?
+                        <li className={tabClassName1} id="tab0" onClick={e => this.changeChartType(0,'yearlyRoe')}>7日年化收益率</li>
+                        :
+                        <li className={tabClassName1} id="tab0" onClick={e => this.changeChartType(0,'nav')}>净值走势</li>
+                    }
+                    {
+                        fund.fundType && fund.fundType == 4 ?
+                        <li className={tabClassName2} id="tab1" onClick={e => this.changeChartType(1,'unitYield')}>万份收益</li>
+                        :
+                        <li className={tabClassName2} id="tab1" onClick={e => this.changeChartType(1,'change')}>收益率走势</li>
+                    }
+                </ul>
+                {children}
+            </div>
         )
     }
 
