@@ -5,7 +5,7 @@ const defaultProps = {
     fund: {
         fundType: 4
     },
-    tabIndex: 1
+    tabIndex: 0
 };
 const propTypes = {
     fund: React.PropTypes.object,
@@ -19,7 +19,7 @@ class FundDetailTab extends Component {
     constructor (props) {
         super(props);
         // 定义 eventHandler
-        this.changeChartType.bind(this);
+        this.changeChartType = this.changeChartType.bind(this);
     }
 
     // 生命周期方法
