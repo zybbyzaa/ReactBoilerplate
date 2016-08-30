@@ -1,10 +1,11 @@
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
-import { tab } from './reducers';
+import { tab,chart } from './reducers';
 
 const rootReducer = combineReducers({
     routing: routerReducer,
-    tab
+    tab,
+    chart
 });
 
 export default rootReducer;

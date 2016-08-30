@@ -11,6 +11,7 @@ import '../assets/scss/fundDetail.scss';
 const defaultProps = {
 };
 const propTypes = {
+
 };
 
 class FundDetail extends Component {
@@ -32,14 +33,16 @@ class FundDetail extends Component {
     // render
     render () {
         const tabIndex = this.props.tab.tabIndex;
+        const chartDay = this.props.chart.chartDay;
         const toggleTab = this.props.actions.toggleTab;
+        const changeChartDay = this.props.actions.changeChartDay;
 
         return (
             <div className="wrapper">
                 <FundDetailHeader />
                 <FundDetailIntro />
                 <FundDetailTab tabIndex={tabIndex} toggleTab={toggleTab}>
-                    <FundDetailTabPanel />
+                    <FundDetailTabPanel chartDay={chartDay} changeChartDay={changeChartDay} />
                 </FundDetailTab>
             </div>
         )
@@ -52,7 +55,8 @@ FundDetail.propTypes = propTypes;
 
 function mapStateToProps(state) {
     return {
-        tab: state.tab.toJS()
+        tab: state.tab.toJS(),
+        chart: state.chart.toJS()
     }
 }
 

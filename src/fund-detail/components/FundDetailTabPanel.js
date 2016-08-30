@@ -2,10 +2,11 @@ import React, { Component, PropTypes } from 'react';
 import moment from 'moment';
 
 const defaultProps = {
-
+    chartDay: '1m'
 };
 const propTypes = {
-
+    chartDay: React.PropTypes.string,
+    changeChartDay: React.PropTypes.func
 };
 
 class FundDetailTabPanel extends Component {
@@ -24,11 +25,12 @@ class FundDetailTabPanel extends Component {
     // event handlers
     changeChartDay (dateType) {
         console.log(dateType);
+        this.props.changeChartDay(dateType);
     }
     //render methods
     // render
     render () {
-    	const {children,fund} = this.props;
+    	const {children,fund,chartDay} = this.props;
 
         return (
             <div className="fund-detail-tab-pane in" id="tab-pane0">
@@ -45,9 +47,9 @@ class FundDetailTabPanel extends Component {
                     </section>
                     <section className="fund-detail-tab-pane-footerr right">
                         <ul className="fund-detail-tab-pane-footerrul clearfix">
-                            <li className="stress" onClick={e => this.changeChartDay('1m')}>近一月</li>
-                            <li onClick={e => this.changeChartDay('3m')}>近三月</li>
-                            <li onClick={e => this.changeChartDay('1y')}>近一年</li>
+                            <li className={chartDay=='1m'?'stress':''} onClick={e => this.changeChartDay('1m')}>近一月</li>
+                            <li className={chartDay=='3m'?'stress':''} onClick={e => this.changeChartDay('3m')}>近三月</li>
+                            <li className={chartDay=='1y'?'stress':''} onClick={e => this.changeChartDay('1y')}>近一年</li>
                         </ul>
                     </section>
                 </div>

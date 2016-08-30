@@ -1,1 +1,2 @@
 export const TOGGLETAB = 'TOGGLETAB';
+export const CHANGECHARTDAY = 'CHANGECHARTDAY';

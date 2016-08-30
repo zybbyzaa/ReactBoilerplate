@@ -10,7 +10,8 @@ const defaultProps = {
 const propTypes = {
     fund: React.PropTypes.object,
     children: React.PropTypes.node,
-    tabIndex: React.PropTypes.number
+    tabIndex: React.PropTypes.number,
+    toggleTab: React.PropTypes.func
 };
 
 class FundDetailTab extends Component {
@@ -34,7 +35,7 @@ class FundDetailTab extends Component {
     //render methods
     // render
     render () {
-    	const {children,fund,tabIndex} = this.props;
+        const {children,fund,tabIndex} = this.props;
         let tabClassName1 = classnames({
             'tab': true,
             'on': tabIndex == 0
