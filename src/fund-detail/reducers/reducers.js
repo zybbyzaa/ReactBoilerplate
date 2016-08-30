@@ -8,6 +8,6 @@ const initialState = fromJS({
 
 export const tab = createReducer(initialState,{
     [TOGGLETAB]: (state,action)=>state.merge({
-    	'tabIndex': action.tabIndex
+    	'tabIndex': action.payload.tabIndex
     })
 })

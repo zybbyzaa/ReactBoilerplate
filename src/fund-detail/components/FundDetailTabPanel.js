@@ -14,7 +14,7 @@ class FundDetailTabPanel extends Component {
     constructor (props) {
         super(props);
         // 定义 eventHandler
-
+        this.changeChartDay = this.changeChartDay.bind(this);
     }
 
     // 生命周期方法
@@ -22,7 +22,9 @@ class FundDetailTabPanel extends Component {
     // getter methods for render
 
     // event handlers
-
+    changeChartDay (dateType) {
+        console.log(dateType);
+    }
     //render methods
     // render
     render () {
@@ -43,9 +45,9 @@ class FundDetailTabPanel extends Component {
                     </section>
                     <section className="fund-detail-tab-pane-footerr right">
                         <ul className="fund-detail-tab-pane-footerrul clearfix">
-                            <li className="stress" onClick="changeChartDay('1m')">近一月</li>
-                            <li onClick="changeChartDay('3m')">近三月</li>
-                            <li onClick="changeChartDay('1y')">近一年</li>
+                            <li className="stress" onClick={e => this.changeChartDay('1m')}>近一月</li>
+                            <li onClick={e => this.changeChartDay('3m')}>近三月</li>
+                            <li onClick={e => this.changeChartDay('1y')}>近一年</li>
                         </ul>
                     </section>
                 </div>

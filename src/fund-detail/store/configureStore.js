@@ -2,7 +2,6 @@ import { applyMiddleware, compose, createStore } from 'redux';
 import createLogger from 'redux-logger';
 import thunk from 'redux-thunk';
 import rootReducer from '../reducers';
-import DevTools from '../containers/DevTools';
 
 let finalCreateStore;
 // const syncHis = syncHistory(browserHistory);
@@ -14,7 +13,7 @@ if (process.env.NODE_ENV === 'production') {
 } else {
     finalCreateStore = compose(
         applyMiddleware(thunk, logger),
-        DevTools.instrument()
+        window.devToolsExtension ? window.devToolsExtension() : f => f
     );
 }
 
