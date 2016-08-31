@@ -8,9 +8,9 @@ const initialState = fromJS({
 })
 
 export const tab = createReducer(initialState,{
-    [TOGGLETAB]: (state,action) => state.set('tabIndex',action.payload.tabIndex)
+    [TOGGLETAB]: (state,action) => state.set('tabIndex',action.payload)
 })
 
 export const chart = createReducer(initialState,{
-    [CHANGECHARTDAY]: (state,action) => state.set('chartDay',action.payload.dateType)
+    [CHANGECHARTDAY]: (state,action) => state.set('chartDay',action.payload)
 })

@@ -9,7 +9,7 @@ const defaultProps = {
 	}
 };
 const propTypes = {
-	fund: React.PropTypes.object
+	fund: PropTypes.object
 };
 
 class FundDetailHeader extends Component {

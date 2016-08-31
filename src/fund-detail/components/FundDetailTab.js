@@ -8,10 +8,10 @@ const defaultProps = {
     tabIndex: 0
 };
 const propTypes = {
-    fund: React.PropTypes.object,
-    children: React.PropTypes.node,
-    tabIndex: React.PropTypes.number,
-    toggleTab: React.PropTypes.func
+    fund: PropTypes.object,
+    children: PropTypes.node,
+    tabIndex: PropTypes.number,
+    toggleTab: PropTypes.func
 };
 
 class FundDetailTab extends Component {

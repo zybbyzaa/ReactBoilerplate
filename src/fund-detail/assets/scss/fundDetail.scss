@@ -212,3 +212,123 @@
 		}
 	}
 }
+/* ****************  资产配置和基金经理 *************/
+.fund-detail-box{
+	width: 100%;
+	border-top: 1px solid #d5d5d5;
+	border-bottom: 1px solid #d5d5d5;
+	background: #fff;
+	padding: 0 0.28rem;
+	box-sizing: border-box;
+	margin-bottom: 0.2rem;
+}
+
+.fund-detail-boxlist{
+	width: 100%;
+	font-size: 0.28rem;
+	border-bottom: 1px solid #d5d5d5;
+	line-height: 0.9rem;
+}
+
+.fund-detail-boxlist{
+	a,a:hover,a:visited,a:active{
+		color: #414141;
+		font-size: 0.28rem;
+		text-decoration: none;
+		-webkit-tap-highlight-color: rgba(0,0,0,0);
+	}
+}
+
+.fund-detail-boxlistlast{
+	border-bottom: none;
+}
+
+.fund-detail-boxlistl{
+	color: #a1a1a1;
+}
+
+.fund-detail-boxlistr{
+	color: #414141;
+	.right-icon{
+		width: 0.15rem;
+		height: 0.28rem;
+		min-height: 0.28rem;
+		display: inline-block;
+		background: url(../images/m/fund/dicon_11.png) no-repeat center;
+		background-size: 100% 100%;
+		position: relative;
+		top: 0.02rem;
+	}
+} 
+
+.fund-detail-ft-tips{
+	width: 100%;
+	text-align: center;
+	font-size: 0.2rem;
+	color: #a1a1a1;
+	padding-bottom: 0.2rem;
+}
+
+/*****  尾部的按钮 ******/
+/*同时存在购买和赎回*/
+.fund-detail-ft-btnswrp{
+	
+	display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    font-size: 0.3rem;
+    color: #fff;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    max-width: 7.5rem;
+}
+
+.fund-detail-ft-btn{
+	display: block;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+    text-decoration: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    text-align: center;
+    background: #fe9a3f;
+    font-size: 0.3rem;
+    color: #fff;
+    line-height: 0.9rem;
+    box-sizing: border-box;
+    
+}
+
+.fund-detail-ft-btnl{
+	border-right: 1px solid #d6d7cf;
+}
+/*只有购买按钮*/
+.fund-detail-ft-btn-onlybuy{
+	display: block;
+	text-decoration: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    text-align: center;
+    background: #fe9a3f;
+    font-size: 0.3rem;
+    color: #fff;
+    line-height: 0.9rem;
+    box-sizing: border-box;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+}
+
+.fund-detail-ft-btntopwords{
+	padding: 0.02rem 0.12rem;
+	border: 1px solid #fff;
+	-moz-border-radius: 0.24rem; /* Firefox */
+  	-webkit-border-radius: 0.24rem; /* Safari 和 Chrome */
+	border-radius: 0.24rem;
+	font-size: 0.2rem;
+	position: absolute;
+    top: 0.1rem;
+    margin-left: 0.06rem;
+    line-height: 1.5;
+}

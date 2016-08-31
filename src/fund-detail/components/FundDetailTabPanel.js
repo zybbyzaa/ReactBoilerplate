@@ -5,8 +5,8 @@ const defaultProps = {
     chartDay: '1m'
 };
 const propTypes = {
-    chartDay: React.PropTypes.string,
-    changeChartDay: React.PropTypes.func
+    chartDay: PropTypes.string,
+    changeChartDay: PropTypes.func
 };
 
 class FundDetailTabPanel extends Component {
