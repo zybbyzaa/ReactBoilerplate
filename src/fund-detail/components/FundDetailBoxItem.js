@@ -3,20 +3,17 @@ import { Link } from 'react-router';
 import classnames from 'classnames';
 
 const defaultProps = {
-    isLast: false,
-    hasLink: false,
-    LinkType: '',
-    query: '',
-    title: '',
-    text: ''
+    data: {
+        isLast: false,
+        hasLink: false,
+        LinkType: '',
+        query: '',
+        title: '',
+        itemText: ''
+    }
 };
 const propTypes = {
-    isLast: PropTypes.bool,
-    hasLink: PropTypes.bool,
-    LinkType: PropTypes.string,
-    query: PropTypes.string,
-    title: PropTypes.string,
-    text: PropTypes.string
+    data: PropTypes.object
 };
 
 class FundDetailBoxItem extends Component {
@@ -35,24 +32,24 @@ class FundDetailBoxItem extends Component {
     //render methods
     // render
     render () {
-        const {isLast,hasLink,linkType,title,itemText,query } = this.props;
+        const { data } = this.props;
         let css = classnames({
             "fund-detail-boxlist": true,
-            "fund-detail-boxlistlast": isLast
+            "fund-detail-boxlistlast": data.isLast,
+            "clearfix": true
         });
 
         return (
             <div className={css}>
-                <div className="fund-detail-boxlistl left">{title}</div>
+                <div className="fund-detail-boxlistl left">{data.title}</div>
                 <div className="fund-detail-boxlistr right">
                     {
-                        hasLink ? 
-                        <Link to={`/${linkType}.html/${query}`}><span>{itemText}</span>&nbsp;&nbsp;&nbsp;&nbsp;<span className="right-icon"></span></Link>
+                        data.hasLink ? 
+                        <Link to={`/${data.linkType}/${data.query}.html`}><span>{data.itemText}</span>&nbsp;&nbsp;&nbsp;&nbsp;<span className="right-icon"></span></Link>
                         :
-                        {itemText}
+                        <span>{data.itemText}</span>
                     }
                 </div>
-                <div className="clearfix"></div>
             </div>
         )
     }

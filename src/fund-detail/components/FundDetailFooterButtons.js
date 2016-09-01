@@ -65,7 +65,7 @@ class FundDetailFooterButtons extends Component {
     	const {showRedeemButton,showBuyButton,discount} = this.props;
     	const buttons = this.renderButtons(showRedeemButton,showBuyButton,discount);
         return (
-            {buttons}
+            <div>{buttons}</div>
         )
     }
 

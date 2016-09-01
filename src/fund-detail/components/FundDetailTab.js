@@ -30,9 +30,19 @@ class FundDetailTab extends Component {
     // event handlers
     changeChartType (tabIndex,type) {
         this.props.toggleTab(tabIndex);
+        this.props.changeChartType(type);
         console.log(type);
     }
     //render methods
+    componentDidMount () {
+        const {fund,changeChartType} = this.props;
+
+        if (fund.fundType && fund.fundType == 4) {
+            changeChartType('yearlyRoe');
+        } else {
+            changeChartType('nav');
+        }
+    }
     // render
     render () {
         const {children,fund,tabIndex} = this.props;

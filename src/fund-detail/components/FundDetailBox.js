@@ -1,7 +1,11 @@
 import React, { Component, PropTypes } from 'react';
+import FundDetailBoxItem from './FundDetailBoxItem';
 
+const defaultProps = {
+    itemData: []
+};
 const propTypes = {
-    children: PropTypes.node
+    itemData: PropTypes.array
 };
 
 class FundDetailBox extends Component {
@@ -11,17 +15,22 @@ class FundDetailBox extends Component {
         super(props);
     }
     render () {
-        const {children} = this.props;
+        const {itemData} = this.props;
 
         return (
             <div className="fund-detail-box">
-                {children}
+            {
+                itemData.map(function(result) {
+                   return <FundDetailBoxItem key={result.id} data={result}/>;
+                })
+            }
             </div>
         )
     }
 
 }
 
+FundDetailBox.defaultProps = defaultProps;
 FundDetailBox.propTypes = propTypes;
 
 export default FundDetailBox

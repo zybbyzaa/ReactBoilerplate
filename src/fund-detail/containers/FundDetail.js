@@ -7,7 +7,6 @@ import FundDetailIntro from '../components/FundDetailIntro';
 import FundDetailTab from '../components/FundDetailTab';
 import FundDetailTabPanel from '../components/FundDetailTabPanel';
 import FundDetailBox from '../components/FundDetailBox';
-import FundDetailBoxItem from '../components/FundDetailBoxItem';
 import FundDetailFooterTips from '../components/FundDetailFooterTips';
 import FundDetailFooterButtons from '../components/FundDetailFooterButtons';
 import '../assets/scss/fundDetail.scss';
@@ -35,12 +34,18 @@ class FundDetail extends Component {
 
     // event handlers
     //render methods
+    componentDidMount () {
+        this.props.actions.getChartData();
+    }
     // render
     render () {
         const tabIndex = this.props.tab.tabIndex;
         const chartDay = this.props.chart.chartDay;
+        const chartType = this.props.chart.chartType;
+        const chartData = this.props.chart.chartData;
         const toggleTab = this.props.actions.toggleTab;
         const changeChartDay = this.props.actions.changeChartDay;
+        const changeChartType = this.props.actions.changeChartType;
         const fund = {
             fundCode: '000609',
             fundName: 'xxxxx',
@@ -62,28 +67,61 @@ class FundDetail extends Component {
                 }]
             }
         };
-        const showRedeemButton = true;
+        const showRedeemButton = false;
         const showBuyButton = true;
         const discount = 0.5;
+        const itemData1 = [{
+            id: 1,
+            title: "资产配置",
+            itemText: "最新规模" + fund.assetAmount/100000000 + "亿",
+            isLast: false,
+            hasLink: true,
+            linkType: "fundAssets",
+            query: fund.fundCode
+        },{
+            id: 2,
+            title: "基金经理",
+            itemText: fund.fundInfo && fund.fundInfo.fundManager[0].name,
+            isLast: true,
+            hasLink: true,
+            linkType: "fundManager",
+            query: fund.fundInfo && fund.fundInfo.fundManager[0].id
+        }];
+        const itemData2 = [{
+            id: 3,
+            title: "基金公司",
+            itemText: fund.fundFullName,
+            isLast: false,
+            hasLink: false,
+            linkType: "",
+            query: ""
+        },{
+            id: 4,
+            title: "基金托管",
+            itemText: fund.fundInfo && fund.fundInfo.trustee,
+            isLast: false,
+            hasLink: false,
+            linkType: "",
+            query: ""
+        },{
+            id: 5,
+            title: "基金成立",
+            itemText: fund.setupDate ? moment(fund.setupDate).format("YYYY-MM-DD") : "",
+            isLast: true,
+            hasLink: false,
+            linkType: "",
+            query: ""
+        }];
 
         return (
             <div className="wrapper">
                 <FundDetailHeader fund={fund}/>
                 <FundDetailIntro fund={fund}/>
-                <FundDetailTab tabIndex={tabIndex} toggleTab={toggleTab} fund={fund}>
-                    <FundDetailTabPanel chartDay={chartDay} changeChartDay={changeChartDay} />
+                <FundDetailTab tabIndex={tabIndex} toggleTab={toggleTab} fund={fund} changeChartType={changeChartType}>
+                    <FundDetailTabPanel chartDay={chartDay} changeChartDay={changeChartDay} chartType={chartType} chartData={chartData} />
                 </FundDetailTab>
-                <FundDetailBox>
-                    <FundDetailBoxItem title="资产配置" itemText={"最新规模" + fund.assetAmount/100000000 + "亿"} 
-                                hasLink={true} linkType="fundManager" query={fund.fundCode}/>
-                    <FundDetailBoxItem title="基金经理" itemText={fund.fundInfo && fund.fundInfo.fundManager[0].name} 
-                                isLast={true} hasLink={true} linkType="fundAssets" query={fund.fundInfo && fund.fundInfo.fundManager[0].id}/>
-                </FundDetailBox>
-                <FundDetailBox>
-                    <FundDetailBoxItem title="基金公司" itemText={fund.fundFullName} />
-                    <FundDetailBoxItem title="基金托管" itemText={fund.fundInfo && fund.fundInfo.trustee} />
-                    <FundDetailBoxItem title="基金成立" itemText={fund.setupDate?moment(fund.setupDate).format("YYYY-MM-DD"):""} isLast={true}/>
-                </FundDetailBox>
+                <FundDetailBox itemData={itemData1}/>
+                <FundDetailBox itemData={itemData2}/>
                 <FundDetailFooterTips/>
                 <FundDetailFooterButtons showRedeemButton={showRedeemButton} showBuyButton={showBuyButton} discount={discount}/>
             </div>

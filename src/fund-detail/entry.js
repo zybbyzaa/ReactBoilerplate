@@ -13,8 +13,8 @@ ReactDOM.render(
     <Provider store={store}>
         <Router history={history}>
             <Route path="/fundDetail.html" component={FundDetail} />
-            <Route path="/fundManager.html/:managerId" component={FundManager}/>
-            <Route path="/fundAssets.html/:fundCode" component={FundAssets}/>
+            <Route path="/fundManager/:managerId.html" component={FundManager}/>
+            <Route path="/fundAssets/:fundCode.html" component={FundAssets}/>
         </Router>
     </Provider>, document.getElementById('root')
 );
